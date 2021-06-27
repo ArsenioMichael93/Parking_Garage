@@ -4,17 +4,31 @@ x = 1
 
 class Garage:
     def __init__(self):
-        self.ticket = 10
+
+        self.ticket = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+        self.Spaces = ['1', '2', '3','4', '5', '6', '7', '8', '9', '10']
+        self.current = {}
+
 
     # Was unsure if anything else needed to come in here but everything
     # functions as it should thus far.
 
     def Enter(self):
-        if self.ticket <= 0:
-            print('Garage is full try again later')
-        else:
-            self.ticket = self.ticket-1
-            self.show()
+
+        if self.ticket == []:
+            print("Garage is full.")
+            return parkingGarage()
+        print("Here are the available tickets: ", self.ticket)
+        ticketnum = (input ('Choose a ticket number: '))
+        while ticketnum not in self.ticket:
+            print("\nTicket not available.")
+            print("Here are the available tickets: ", self.ticket)
+            ticketnum = (input('Please enter valid ticket number: '))
+            
+        self.ticket.remove(ticketnum)
+        self.Spaces.remove(ticketnum)
+        self.current[ticketnum] = ""
+        print("Success")
 
     def Quit(self):
         self.show()
@@ -24,7 +38,11 @@ class Garage:
 
     def Pay(self):
         ticketnum = input
+
+        if self.currentTicket=={}:
+
         if self.ticket >= 10:
+
             print('Garage Is Empty')
         if self.ticket == 0:
             print("You haven't purchased a ticket yet!")
@@ -87,4 +105,6 @@ while (x == 1):
             park.show()
 
         else:
+
             print("Wrong input, select Enter/Pay and Exit/Show or Quit: ")
+
