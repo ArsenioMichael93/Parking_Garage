@@ -27,7 +27,6 @@ class Garage:
         self.ticket.remove(ticketnum)
         self.Spaces.remove(ticketnum)
         self.current[ticketnum] = ""
-        print(self.current)
         print("Success")
 
     def Quit(self):
