@@ -5,10 +5,9 @@ x = 1
 class Garage:
     def __init__(self):
 
-        self.ticket = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-        self.Spaces = ['1', '2', '3','4', '5', '6', '7', '8', '9', '10']
+        self.ticket = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+        self.Spaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
         self.current = {}
-
 
     # Was unsure if anything else needed to come in here but everything
     # functions as it should thus far.
@@ -17,14 +16,14 @@ class Garage:
 
         if self.ticket == []:
             print("Garage is full.")
-            return parkingGarage()
+            return Garage()
         print("Here are the available tickets: ", self.ticket)
-        ticketnum = (input ('Choose a ticket number: '))
+        ticketnum = (input('Choose a ticket number: '))
         while ticketnum not in self.ticket:
             print("\nTicket not available.")
             print("Here are the available tickets: ", self.ticket)
             ticketnum = (input('Please enter valid ticket number: '))
-            
+
         self.ticket.remove(ticketnum)
         self.Spaces.remove(ticketnum)
         self.current[ticketnum] = ""
@@ -34,41 +33,50 @@ class Garage:
         self.show()
         print('EXITING..')
 
-#Condensed the rest of exit into pay to make Pay and Exit. 
+# Condensed the rest of exit into pay to make Pay and Exit.
 
     def Pay(self):
         ticketnum = input
 
-        if self.currentTicket=={}:
-
-        if self.ticket >= 10:
-
+        if self.ticket == []:
             print('Garage Is Empty')
-        if self.ticket == 0:
+            return Garage
+
+        elif ticketnum == 0:
             print("You haven't purchased a ticket yet!")
 
-        ask = input("What's your ticket number?\n")
+        ticketnum = input("What's your ticket number?\n")
+        while ticketnum in self.ticket:
+            print("\nTicket not available.")
+            ticketnum = (input('Please enter valid ticket number: '))
+        self.ticket.extend(ticketnum)
+        self.Spaces.extend(ticketnum)
+        self.current[ticketnum] = ""
         payment = input("You're stay has cost you $10 please pay now. ")
         if payment == '$10' or 10:
-            self.ticket = self.ticket+1
+
             self.show()
             print('\nPlease have a nice day and drive safe.')
+
         else:
-
             print('That was not the correct amount')
-        self.show()
 
-#idea append and pop to add and remove numbers. need to make pay method confinded to 1-10
+
+# idea append and pop to add and remove numbers. need to make pay method confinded to 1-10
+
+
     def run():
         garage_tickets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         garage_spaces = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         garage = Garage(garage_tickets, garage_spaces)
 
-#added self.show to all areas that had the below print statements just to clean things up a smidge.
+# added self.show to all areas that had the below print statements just to clean things up a smidge.
 
     def show(self):
-        print('Spaces Left: ' + str(self.ticket))
-        print('Ticket Left: ' + str(self.ticket))
+        self.ticket.sort
+        self.Spaces.sort
+        print('Spaces Left: ' + str(sorted(self.Spaces)))
+        print('Ticket Left: ' + str(sorted(self.ticket)))
 
 
 # Easier way to call to the class.
@@ -84,12 +92,13 @@ while (x == 1):
     start = input("\nWelcome to Parking Lot, press 'Enter' to continue")
     if start == "":
 
-        choice = input("Would you like to do? Enter/Pay and Exit/Show or Quit: ")
+        choice = input(
+            "Would you like to do? Enter/Pay and Exit/Show or Quit: ")
 
         if choice == 'enter':
             park.Enter()
 
-    #Condensed the rest of exit into pay to make Pay and Exit. 
+    # Condensed the rest of exit into pay to make Pay and Exit.
 
         elif choice == 'exit':
             park.Pay()
@@ -107,4 +116,3 @@ while (x == 1):
         else:
 
             print("Wrong input, select Enter/Pay and Exit/Show or Quit: ")
-
