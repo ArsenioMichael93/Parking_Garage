@@ -27,6 +27,7 @@ class Garage:
         self.ticket.remove(ticketnum)
         self.Spaces.remove(ticketnum)
         self.current[ticketnum] = ""
+        print(self.current)
         print("Success")
 
     def Quit(self):
@@ -45,14 +46,17 @@ class Garage:
         elif ticketnum == 0:
             print("You haven't purchased a ticket yet!")
 
-        ticketnum = input("What's your ticket number?\n")
-        while ticketnum in self.ticket:
+        ticketnum = input("What's your ticket number?\nOr would you like to quit?\n")
+
+        while ticketnum not in self.current:
+            if ticketnum == 'quit':
+                exit()
             print("\nTicket not available.")
-            ticketnum = (input('Please enter valid ticket number: '))
+            ticketnum = (input('Please enter valid ticket number '))
         self.ticket.extend(ticketnum)
         self.Spaces.extend(ticketnum)
         self.current[ticketnum] = ""
-        payment = input("You're stay has cost you $10 please pay now. ")
+        payment = input("You're stay has cost you $10 please pay now.")
         if payment == '$10' or 10:
 
             self.show()
@@ -61,14 +65,6 @@ class Garage:
         else:
             print('That was not the correct amount')
 
-
-# idea append and pop to add and remove numbers. need to make pay method confinded to 1-10
-
-
-    def run():
-        garage_tickets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        garage_spaces = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        garage = Garage(garage_tickets, garage_spaces)
 
 # added self.show to all areas that had the below print statements just to clean things up a smidge.
 
